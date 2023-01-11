@@ -1,3 +1,0 @@
-ALLOWED_EXTENSIONS = {'json'}
-UPLOAD_FOLDER = '\\app\\data\\'
-CHUNKS_SIZE = 10000

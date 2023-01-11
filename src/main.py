@@ -1,22 +1,10 @@
-import os
-from pathlib import Path
-
-from src.app.extract import read_files
-from src.config import UPLOAD_FOLDER
-
-BASE_DIR = Path(__file__).resolve(strict=True).parent
-PATH_DIR = (str(BASE_DIR) + UPLOAD_FOLDER)
-
+from src.app.pipeline import Pipeline
+from src.constant import PATH_DIR, N_BATCH_FILES, DATE
 
 
 def main():
-    """
-    extract
-    trasnform
-    load
-    """
-    print(read_files(PATH_DIR))
-    return ""
+    pipeline = Pipeline(DATE, PATH_DIR, N_BATCH_FILES)
+    pipeline.load_json()
 
 
 if __name__ == "__main__":

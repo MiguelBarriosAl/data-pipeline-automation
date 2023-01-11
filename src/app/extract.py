@@ -1,14 +1,12 @@
 import json
-import os
 from src.app.checkers import check_allowed_file
-from src.config import CHUNKS_SIZE
+from src.constant import JSON_CHUNKS_SIZE, PATH_DIR
 
 
-def read_files(path: str) -> list:
-    files = os.listdir(path)
+def read_json(files: list) -> list:
     # sorted_files = sorted(files, key=lambda x: int(x.split('-')[-2]))
     allowed_files = [file for file in files[:2] if check_allowed_file(file)]
-    files_chunks = process_files_chunks(path, allowed_files)
+    files_chunks = process_files_chunks(PATH_DIR, allowed_files)
     return files_chunks
 
 
@@ -24,10 +22,9 @@ def process_files_chunks(path, filenames: list[str]) -> list:
                     break
                 data.append(json.loads(line))
                 counter += 1
-                if counter >= CHUNKS_SIZE:
+                if counter >= JSON_CHUNKS_SIZE:
                     all_data.append(data)
                     data = []
                     counter = 0
             all_data.append(data)
     return all_data
-
