@@ -1,6 +1,6 @@
 import mysql.connector
 
-class DB_crawler:
+class Database:
     def __init__(self, host: str, database: str, user: str, password: str):
         """
         Connexion database SQL and query
@@ -20,7 +20,7 @@ class DB_crawler:
 
     def query(self, query) -> str:
         conn = self._connect_db()
-        return query_db(conn, query)
+
 
 
 def conn_db(host, database, user, password) -> list:
@@ -43,10 +43,10 @@ def query_db(conn: object, query: str) -> str:
             sql = query
             cur.execute(sql)
             conn.commit()
-            results = cur.fetchall()
+            #results = cur.fetchall()
             print('results:', results, sql)
     except Exception as e:
-        print('Error query %s to Mysql with error %s' % (sql, e))
+        print('Error query %s to Mysql with error %s' % e)
     finally:
         if conn.is_connected():
             conn.close()

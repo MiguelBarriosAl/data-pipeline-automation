@@ -15,7 +15,7 @@ def split_into_batches(data: list, batch_size: int) -> list:
         yield data[i:i + batch_size]
 
 
-def generate_id():
+def generate_id() -> str:
     timestamp = int(time.time())
     random_value = random.randint(0, 1000000)
     return f"{timestamp}{random_value}"
