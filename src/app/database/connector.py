@@ -1,5 +1,6 @@
 import mysql.connector
 
+
 class Database:
     def __init__(self, host: str, database: str, user: str, password: str):
         """
@@ -20,6 +21,7 @@ class Database:
 
     def query(self, query) -> str:
         conn = self._connect_db()
+        return query_db(conn, query)
 
 
 
@@ -40,11 +42,8 @@ def query_db(conn: object, query: str) -> str:
     results = []
     try:
         with conn.cursor(buffered=True) as cur:
-            sql = query
-            cur.execute(sql)
+            cur.execute(query)
             conn.commit()
-            #results = cur.fetchall()
-            print('results:', results, sql)
     except Exception as e:
         print('Error query %s to Mysql with error %s' % e)
     finally:

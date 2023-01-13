@@ -8,9 +8,9 @@ def insert_vehicles(id_event, id_vehicle, lat, lng, at_vehicle):
     return f"""INSERT INTO vehicles (id_event, id_vehicle, lat , lng, at_vehicle) VALUES ({id_event}, '{id_vehicle}', 
                 {lat}, {lng}, STR_TO_DATE('{at_vehicle}', '%Y-%m-%d %H:%i:%s'));"""
 
-def insert_vehicles_deregister(id_event, id_vehicle, lat, lng, at_vehicle):
+def insert_vehicle_event(id_event, id_vehicle, lat, lng, at_vehicle):
     return f"""INSERT INTO vehicles (id_event, id_vehicle, lat , lng, at_vehicle) VALUES ({id_event}, '{id_vehicle}', 
-                {lat}, {lng}, STR_TO_DATE('{at_vehicle}', '%Y-%m-%d %H:%i:%s'));"""
+                {lat}, {lng}, {at_vehicle});"""
 
 
 def insert_operating_period(id_event, id_operating, start, finish):

@@ -1,5 +1,4 @@
-import os
-from dotenv import load_dotenv, find_dotenv
+from decouple import config
 from pathlib import Path
 
 # Data routing
@@ -14,7 +13,7 @@ N_BATCH_FILES = 50
 JSON_CHUNKS_SIZE = 10000
 
 # Access to Database
-HOST = os.getenv('DB_ADDRESS')
-PASSWORD = os.getenv('DB_PASS')
-DB = os.getenv('DB_DATABASE')
-USER = os.getenv('DB_USER')
+HOST = config('DB_ADDRESS')
+PASSWORD = config('DB_PASS')
+DB = config('DB_DATABASE')
+USER = config('DB_USER')

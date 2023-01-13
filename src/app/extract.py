@@ -4,9 +4,7 @@ from src.constant import JSON_CHUNKS_SIZE, PATH_DIR
 
 
 def read_json(files: list) -> list:
-
     sorted_files = sorted(files, key=lambda x: int(x.split('-')[-2]))
-    print(sorted_files)
     allowed_files = [file for file in sorted_files if check_allowed_file(file)]
     files_chunks = process_files_chunks(PATH_DIR, allowed_files)
     return files_chunks
@@ -15,8 +13,6 @@ def read_json(files: list) -> list:
 def process_files_chunks(path, filenames: list[str]) -> list:
     all_data = []
     for filename in filenames:
-        if filename == '2019-06-01-15-17-3-events.json':
-            print(filename)
         with open(path + filename, "r") as f:
             data = [filename]
             counter = 0

@@ -15,9 +15,9 @@ CREATE TABLE events (
 CREATE TABLE vehicles (
     id_event BIGINT UNSIGNED  NOT NULL UNIQUE,
     id_vehicle VARCHAR(50) NOT NULL,
-    lat DECIMAL(10, 8) NOT NULL,
-    lng DECIMAL(10, 8) NOT NULL,
-    at_vehicle DATETIME NOT NULL,
+    lat DECIMAL(10, 8),
+    lng DECIMAL(10, 8),
+    at_vehicle DATETIME,
     FOREIGN KEY(id_event) REFERENCES events(id) ON DELETE CASCADE
 );
 
