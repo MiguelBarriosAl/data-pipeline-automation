@@ -3,13 +3,7 @@ from src.app.checkers import check_fields
 from src.app.database.connector import Database
 from src.app.database.query import insert_events, insert_vehicles, insert_operating_period, insert_vehicle_event
 from src.app.utils import generate_id
-from src.constant import HOST, USER, PASSWORD, DB
-
-
-events_fields = ["event", "on", "at", "data", "organization_id"]
-vehicles_fields = ["id", "location"]
-vehicles_deregister_fields = ["id"]
-operating_period_fields = ["id", "start", "finish"]
+from src.constant import HOST, USER, PASSWORD, DB, EVENT, VEHICLES, VEHICLES_DEREGISTER, OPERATING
 
 
 def transform_date(date_string):
@@ -18,7 +12,7 @@ def transform_date(date_string):
 
 
 def event_data(data: dict) -> list:
-    check_fields(data, events_fields)
+    check_fields(data, EVENT)
     event_type = data['event']
     on = data['on']
     at = transform_date(data['at'])
@@ -27,7 +21,7 @@ def event_data(data: dict) -> list:
 
 
 def vehicle_update(data: dict) -> list:
-    check_fields(data, vehicles_fields)
+    check_fields(data, VEHICLES)
     id_vehicle = data['id']
     lat = data['location']['lat']
     lng = data['location']['lng']
@@ -36,7 +30,7 @@ def vehicle_update(data: dict) -> list:
 
 
 def vehicle_event(data: dict) -> list:
-    check_fields(data, vehicles_deregister_fields)
+    check_fields(data, VEHICLES_DEREGISTER)
     id_vehicle = data['id']
     lat = 'NULL'
     lng = 'NULL'
@@ -45,7 +39,7 @@ def vehicle_event(data: dict) -> list:
 
 
 def operating_period_data(data: dict) -> list:
-    check_fields(data, operating_period_fields)
+    check_fields(data, OPERATING)
     id_operating = data['id']
     start = transform_date(data['start'])
     finish = transform_date(data['finish'])
@@ -53,7 +47,6 @@ def operating_period_data(data: dict) -> list:
 
 
 def transform_n_load(data: list):
-    print(HOST)
     db = Database(host=HOST, database=DB, user=USER, password=PASSWORD)
     for inner_list in data:
         file = inner_list[0]

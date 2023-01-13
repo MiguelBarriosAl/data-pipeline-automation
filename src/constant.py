@@ -17,3 +17,9 @@ HOST = config('DB_ADDRESS')
 PASSWORD = config('DB_PASS')
 DB = config('DB_DATABASE')
 USER = config('DB_USER')
+
+# Fields Data Models
+EVENT = ["event", "on", "at", "data", "organization_id"]
+VEHICLES = ["id", "location"]
+VEHICLES_DEREGISTER = ["id"]
+OPERATING = ["id", "start", "finish"]
