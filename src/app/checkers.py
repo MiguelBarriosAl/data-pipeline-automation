@@ -1,4 +1,4 @@
-from src.constant import ALLOWED_EXTENSIONS
+from constant import ALLOWED_EXTENSIONS
 
 
 def check_allowed_file(filename: str) -> str:

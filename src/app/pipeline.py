@@ -1,7 +1,7 @@
 import os
-from src.app.data_extract_files import read_json
-from src.app.data_transformer_db import transform_n_load
-from src.app.utils import filter_files_by_date_json, split_into_batches
+from app.data_extract_files import read_json
+from app.data_transformer_db import transform_n_load
+from app.utils import filter_files_by_date_json, split_into_batches
 
 
 class Pipeline:

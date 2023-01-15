@@ -1,6 +1,6 @@
 import json
-from src.app.checkers import check_allowed_file
-from src.constant import JSON_CHUNKS_SIZE, PATH_DIR
+from app.checkers import check_allowed_file
+from constant import JSON_CHUNKS_SIZE, PATH_DIR
 
 
 def process_files_chunks(path, filenames: list[str]) -> list:

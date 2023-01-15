@@ -1,13 +1,13 @@
 import datetime
-from src.app.checkers import check_fields
-from src.app.database.connector import Database
-from src.app.database.query import insert_events, insert_vehicles, insert_operating_period, insert_vehicle_event
-from src.app.utils import generate_id
-from src.constant import HOST, USER, PASSWORD, DB, EVENT, VEHICLES, VEHICLES_DEREGISTER, OPERATING
+from app.checkers import check_fields
+from app.database.connector import Database
+from app.database.query import insert_events, insert_vehicles, insert_operating_period, insert_vehicle_event
+from app.utils import generate_id
+from constant import HOST, USER, PASSWORD, DB, EVENT, VEHICLES, VEHICLES_DEREGISTER, OPERATING
 
 
-def transform_date(date_string):
-    date_object = datetime.datetime.strptime(date_string, "%Y-%m-%dT%H:%M:%S.%fZ")
+def transform_date(date: str) -> str:
+    date_object = datetime.datetime.strptime(date, "%Y-%m-%dT%H:%M:%S.%fZ")
     return date_object.strftime("%Y-%m-%d %H:%M:%S")
 
 

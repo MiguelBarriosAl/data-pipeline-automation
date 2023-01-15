@@ -2,7 +2,7 @@ from decouple import config
 from pathlib import Path
 
 # Data routing
-DATA_FOLDER = '\\app\\data\\'
+DATA_FOLDER = '/app/data/'
 BASE_DIR = Path(__file__).resolve(strict=True).parent
 PATH_DIR = (str(BASE_DIR) + DATA_FOLDER)
 

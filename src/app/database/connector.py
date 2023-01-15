@@ -24,7 +24,6 @@ class Database:
         return query_db(conn, query)
 
 
-
 def conn_db(host, database, user, password) -> list:
     try:
         conn = mysql.connector.connect(host=host,
