@@ -47,11 +47,33 @@ It also makes it possible to schedule a daily execution through the DATE constan
 - **src/app/checkers.py:** Data input supervision functions for data processing and loading into the database
 - **src/app/data_extract_files.py:** Loading data into chunks
 - **src/app/data_transformer_db.py:** Data processing and load in Mysql database
-- **src/app/utils:** Complementary functions for the smooth operation of the pipeline
+- **src/app/utils.py:** Complementary functions for the smooth operation of the pipeline
+- **src/app/logs.py:**: Logging of operations during application operation
 
 ### tests/*
 
 - **tests/***: Running of Unit Tests
+
+### Dockerfile
+- Set of commands for to set up a MySQL server. The first line specifies that the image being used is "mysql/mysql-server". 
+The next lines use the ENV command to set environment variables for the database name, root password, and root host. 
+The next line uses the ADD command to add a file called "schema.sql" to the "/docker-entrypoint-initdb.d" directory. 
+Finally, the last line uses the EXPOSE command to make port 3306 available to the host
+
+### schema.sql
+SQL script that creates three tables in a MySQL database named "door2door".
+
+The first table named "events" has six columns: id, file, event, on_event, at_event and organization_id. The "id" column 
+is set as the primary key and is unique and not null.
+
+The second table named "vehicles" has five columns: id_event, id_vehicle, lat, lng and at_vehicle. The "id_event" column 
+is set as a foreign key referencing the "id" column in the "events" table and on delete it is set to cascade.
+
+The third table named "operating_period" has five columns: id_event, id_operating, start, finish and on_finish. 
+The "id_event" column is set as a foreign key referencing the "id" column in the "events" table and on delete it is set to cascade.
+
+These commands create the structure of the database and the relationships between the tables, so that data can be inserted 
+and queried in a logical and consistent way.
 
 # Requirements
 
@@ -68,6 +90,7 @@ Install python==3.9
         sudo apt install python3.9.7
 
         python --version
+
 Clone the repository
 
         git clone https://github.com/MiguelBarriosAl/data-pipeline-automation.

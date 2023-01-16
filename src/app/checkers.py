@@ -12,4 +12,3 @@ def check_fields(data: dict, fields: list):
             missing_fields.append(field)
     assert not missing_fields, f"Following fields do not exist: {missing_fields} in {data}"
     return True
-

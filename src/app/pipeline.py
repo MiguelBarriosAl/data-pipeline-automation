@@ -16,8 +16,3 @@ class Pipeline:
         for batch in split_into_batches(self.files_json_by_date, self.batch):
             self.data_batch = read_json(batch)
             transform_n_load(self.data_batch)
-
-
-
-
-

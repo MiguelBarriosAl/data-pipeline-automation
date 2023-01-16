@@ -95,12 +95,3 @@ def transform_n_load(data: list):
             else:
                 log.error(inner_dict)
                 print(f"Error data: {inner_dict}")
-
-
-
-
-
-
-
-
-
