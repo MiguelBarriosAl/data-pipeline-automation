@@ -2,6 +2,7 @@ import datetime
 from app.checkers import check_fields
 from app.database.connector import Database
 from app.database.query import insert_events, insert_vehicles, insert_operating_period, insert_vehicle_event
+from app.logs import Logs
 from app.utils import generate_id
 from constant import HOST, USER, PASSWORD, DB, EVENT, VEHICLES, VEHICLES_DEREGISTER, OPERATING
 
@@ -70,6 +71,7 @@ def transform_n_load(data: list):
     Returns:
         None
     """
+    log = Logs()
     db = Database(host=HOST, database=DB, user=USER, password=PASSWORD)
     for inner_list in data:
         file = inner_list[0]
@@ -91,7 +93,9 @@ def transform_n_load(data: list):
                 query_operating_period = insert_operating_period(id_event, operating[0], operating[1], operating[2])
                 db.query(query_operating_period)
             else:
+                log.error(inner_dict)
                 print(f"Error data: {inner_dict}")
+
 
 
 

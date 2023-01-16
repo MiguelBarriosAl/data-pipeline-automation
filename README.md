@@ -94,7 +94,7 @@ Create file `.env:` with enviroment variables:
 
 `  docker exec -it <container_id> bash`
 
-    mysql -h root -p
+    mysql -h 127.0.0.1 -p
 
     Use door2door
 

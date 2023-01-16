@@ -1,11 +1,15 @@
 import json
 from app.checkers import check_allowed_file
+from app.logs import Logs
 from constant import JSON_CHUNKS_SIZE, PATH_DIR
 
+log = Logs()
 
 def process_files_chunks(path, filenames: list[str]) -> list:
     all_data = []
     for filename in filenames:
+        log.info(filename)
+        print(f'Loading fie: {filename}')
         with open(path + filename, "r") as f:
             data = [filename]
             counter = 0
