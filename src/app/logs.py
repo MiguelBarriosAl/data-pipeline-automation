@@ -3,6 +3,7 @@ import logging
 
 
 class Logs:
+
     def __init__(self):
         self.timestamp = datetime.datetime.now()
 
