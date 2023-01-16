@@ -34,7 +34,7 @@ The project consists of the following files:
 - **src/constant.py:** Pipeline configuration constants. With the constants you can set the number of batches and chunks that 
 best fit the project, thus making it more scalable. with the constants you can set the number of batches and chunks that best fit the project, thus making it more scalable.
 It also makes it possible to schedule a daily execution through the DATE constant. A possible solution could be to include 
-crontab and include in the date variable the current date for the execution of specific files.
+**crontab** and include in the date variable the current date for the execution of specific files.
 - **src/data:** Local json files
 
 ### src/database/*
@@ -94,7 +94,12 @@ Create file `.env:` with enviroment variables:
 
 `  docker exec -it <container_id> bash`
 
-`  mysql -h root -p`
+    mysql -h root -p
+
+    Use door2door
+
+    SELECT * FROM events JOIN operating_period ON events.id = operating_period.id_event WHERE operating_period.start >= '2015-01-01' AND operating_period.start <= '2022-12-31';
+
 
 # Conclusion
 
