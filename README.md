@@ -61,33 +61,40 @@ crontab and include in the date variable the current date for the execution of s
 
 # Installation and Run
 
-* Install python==3.9.7
+Install python==3.9
 
         sudo apt update
 
         sudo apt install python3.9.7
 
         python --version
-* Clone the repository
+Clone the repository
 
         git clone https://github.com/MiguelBarriosAl/data-pipeline-automation.
-* Create file `.env:` with enviroment variables:
 
-  * DB_ADDRESS=*****
-  * DB_PASS=*****
-  * DB_DATABASE=*****
-  * DB_USER=*****
+Create file `.env:` with enviroment variables:
 
-* Docker run Database:
+*   DB_ADDRESS=*****
+*   DB_PASS=*****
+*   DB_DATABASE=*****
+*   DB_USER=*****
 
-  `docker build -t <name> . `
+  Docker run Database:
+  
 
-  `docker run -dp 3306:3306 --env-file .env <name>`
+    docker build -t <name> . 
 
-  `docker exec -it <container_id> bash`
+    docker run -dp 3306:3306 --env-file .env <name>
+
 * Run Pipeline
 
-  `python .\src\main.py`
+`python .\src\main.py`
+
+* Tests Database
+
+`  docker exec -it <container_id> bash`
+
+`  mysql -h root -p`
 
 # Conclusion
 
