@@ -1,4 +1,3 @@
-import json
 import unittest
 from unittest.mock import mock_open, Mock
 from app.data_extract_files import process_files_chunks

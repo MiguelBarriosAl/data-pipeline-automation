@@ -5,6 +5,20 @@ from app.database.query import insert_events, insert_vehicles, insert_operating_
 from app.utils import generate_id
 from constant import HOST, USER, PASSWORD, DB, EVENT, VEHICLES, VEHICLES_DEREGISTER, OPERATING
 
+"""
+    Transform_n_load function takes a list of data as its parameter 
+    and performs transformations on that data before loading 
+    it into a specific database. It uses the helper functions 
+    event_data, vehicle_update, vehicle_event, operating_period_data, 
+    and transform_date to extract and transform the relevant information 
+    before executing SQL queries to insert the data into  the database.
+    It also uses a check_fields function to validate the fields of the json data.
+    It uses a db connection object 'Database' to connect and run the queries on the database.
+    It also uses 'generate_id' function to generate unique ids for the events.
+    It uses insert_events, insert_vehicles, insert_vehicle_event, 
+    insert_operating_period functions to generate the insert statements.
+"""
+
 
 def transform_date(date: str) -> str:
     date_object = datetime.datetime.strptime(date, "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -47,6 +61,15 @@ def operating_period_data(data: dict) -> list:
 
 
 def transform_n_load(data: list):
+    """
+    The function takes a list of data and performs transformations and loadings into a specified database.
+
+    Parameters:
+        data (list): List of data to be transformed and loaded into the database
+
+    Returns:
+        None
+    """
     db = Database(host=HOST, database=DB, user=USER, password=PASSWORD)
     for inner_list in data:
         file = inner_list[0]
