@@ -5,7 +5,6 @@ from app.utils import filter_files_by_date_json, split_into_batches
 
 
 class Pipeline:
-
     def __init__(self, date: str, path: str, batch: int):
         self.data_batch = None
         self.json_files = [f for f in os.listdir(path)]
