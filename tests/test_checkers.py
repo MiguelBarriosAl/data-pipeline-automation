@@ -3,7 +3,6 @@ from src.app.checkers import check_allowed_file, check_fields
 
 
 class TestCheckAllowedFile(unittest.TestCase):
-
     def test_check_allowed_file(self):
         test_filename = 'file.json'
         result = check_allowed_file(test_filename)
@@ -16,7 +15,6 @@ class TestCheckAllowedFile(unittest.TestCase):
 
 
 class TestCheckFields(unittest.TestCase):
-
     def test_check_fields(self):
         test_data = {'field1': 'value1', 'field2': 'value2'}
         fields = ['field1', 'field2']
