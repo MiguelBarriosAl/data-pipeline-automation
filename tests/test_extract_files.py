@@ -6,7 +6,6 @@ mock = Mock()
 
 
 class TestProcessFilesChunks(unittest.TestCase):
-
     @mock.patch('builtins.open', mock_open(read_data='{"line1": "data1"}\n{"line2": "data2"}\n'))
     def test_process_files_chunks(self, mock_file):
         path = './test_files/'
