@@ -3,7 +3,6 @@ from src.app.utils import filter_files_by_date_json, split_into_batches
 
 
 class TestFilterFilesByDateJson(unittest.TestCase):
-
     def test_filter_files_by_date_json(self):
         test_list = ['file1_2021-01-01.json', 'file2_2021-02-01.json', 'file3_2022-01-01.json', 'file4_2022-02-01.json']
         date = '2021'
@@ -24,7 +23,6 @@ class TestFilterFilesByDateJson(unittest.TestCase):
 
 
 class TestSplitIntoBatches(unittest.TestCase):
-
     def test_split_into_batches(self):
         test_data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         batch_size = 3
